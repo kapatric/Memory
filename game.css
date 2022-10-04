@@ -1,0 +1,32 @@
+
+
+#grid {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  margin: 10px;
+  
+  
+}
+header {
+  text-align: center;
+  font-size: xx-large;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h4 {
+  text-align: center;
+  margin: 5px;
+}
+
+.cell {
+  height: 100px;
+  border: 2px solid black;
+  width: 100px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+button {
+  margin-top: 25px;
+}
