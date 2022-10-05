@@ -9,18 +9,13 @@
 - Use semantic markup for HTML and CSS (adhere to best practices, pass validation)
 - Show a good commit history with frequent commits
 
-### Steps
-For the Snake game, we'll need to:
+### Game Premise
+- The game consists of an even number of tiles with images on one side and a generic back. Each image appears on precisely two tiles.
+- When the game starts, all tiles are turned face down.
+- The player then flips over two cards, selecting them by clicking on them. If the two tiles have the same image, they remain face up. Otherwise, the tiles flip back over after a small period of time.
+- The goal of the game is to get all the tiles flipped face up (i.e., find all the matching image pairs) in the least number of tries. That means that lower number of tries are better scores.
 
-Create a grid with cells - the game grid where the snake and food will be.
-Move the snake from cell to cell.
-Control the snake's direction.
-Randomly place food items.
-Detect when the snake's head touches the food.
-Detect when the snake hits the wall of the game grid.
-Detect when the snake hits itself.
-Keep track of the score - how many food items are eaten.
 
 ### Contribution
-Make Snake with Vanilla Javascript:
-https://docs.replit.com/tutorials/make-snake-game-vanilla-javascript
+- Intro to "Memory:
+https://www.khanacademy.org/computing/computer-programming/programming-games-visualizations/memory-game/a/intro-to-memory
