@@ -42,15 +42,16 @@ function makeGrid() {
     for (let j = 0; j < 5; j++){
       let myCell = document.createElement("td");
       myCell.classList = "cell"
+      myCell.addEventListener("click", handleCellClicked)
   //------ send images to cells    
       let cardHTML = `
       <div class="flip-card">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="${selected[index].image}" alt="Avatar" style="width:100px;height:100px;">
+          
         </div>
         <div class="flip-card-back">
-          
+        <img src="${selected[index].image}" alt="Avatar" style="width:100px;height:100px;">
         </div>
       </div>
     </div>
@@ -63,17 +64,21 @@ function makeGrid() {
 }
 // makeGrid()
 
-let cells = document.querySelectorAll(".cell")
-//console.log(cells)
+// let cells = document.querySelectorAll(".cell")
+// console.log(cells)
 
-for (let i = 0; i < cells.length; i++) {
-cells[i].draw
-}
 
-cells.forEach((cell) => cell.addEventListener("click", handleCellClicked));
+// cells.forEach((cell) => cell.addEventListener("click", handleCellClicked));
 
-function handleCellClicked() {
+function handleCellClicked(e) {
   console.log("I was Clicked!")
+  console.log(e.target.parentElement.parentElement)
+  console.log(e.target.parentElement)
+  let flipContainer = e.target.parentElement.parentElement
+  let flipInnerContainer = e.target.parentElement
+
+  flipContainer.style.transform = 'rotateX(180deg)';
+  flipInnerContainer.style.transform = 'rotateX(180deg)';
 }
 
 // ------- card image creation && push ------
@@ -104,7 +109,8 @@ function shuffleSelected() {
       selected[randomIndex], selected[currentIndex]];
   }
   return selected;
-  
 }
 
-console.log(selected)
+//console.log(selected)
+
+// --------------
