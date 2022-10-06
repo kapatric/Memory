@@ -51,6 +51,12 @@ for (let i = 0; i < cells.length; i++) {
 cells[i].draw
 }
 
+cells.forEach((cell) => cell.addEventListener("click", handleCellClicked));
+
+function handleCellClicked() {
+  console.log("Iwas Clicked!")
+}
+
 // ------- card image creation ------
 function gridImages() {
   console.log(imagesArr)
@@ -61,17 +67,7 @@ function gridImages() {
     selected.push(face); // pushing copies 
     selected.push(face);
     imagesArr.splice(randomInd, 1); // removing from array so we don't select twice
-    // console.log('imagesArr', imagesArr)
-    // console.log('isArray imagesArr', Array.isArray(imagesArr))
-    // console.log('imagesArr[0]', imagesArr[0])
-    // console.log('imagesArr.length', imagesArr.length)
-    // console.log('randomInd', randomInd)
     console.log("spliced", imagesArr)
   }
 }
 
-// console.log('imagesArr', imagesArr)
-// console.log('isArray imagesArr', Array.isArray(imagesArr))
-// console.log('imagesArr[0]', imagesArr[0])
-// console.log('imagesArr.length', imagesArr.length)
-// console.log('randomInd', randomInd)
