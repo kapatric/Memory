@@ -1,4 +1,6 @@
 const url = "https://foodish-api.herokuapp.com/api/images/dessert";
+let selected = [];
+let imagesArr = []
 
 // fetch(url)
 //   .then((res) => res.json())
@@ -6,14 +8,16 @@ const url = "https://foodish-api.herokuapp.com/api/images/dessert";
 //   console.log(data)
 //   })
 
+ // ------- Fetching Images ---------
 async function fetchImages() {
-  let imagesArr = []
   for (let i = 0; i < 10 ; i++){
     let res = await fetch(url)
     let data = await res.json()
     imagesArr.push(data)
   }
-  console.log(imagesArr)
+  // console.log(Array.isArray(imagesArr)),
+  //   console.log('imagesArr', imagesArr)
+  gridImages()
 }
 
 fetchImages()
@@ -41,8 +45,33 @@ function makeGrid() {
 makeGrid()
 
 let cells = document.querySelectorAll(".cell")
-console.log(cells)
+//console.log(cells)
 
 for (let i = 0; i < cells.length; i++) {
 cells[i].draw
 }
+
+// ------- card image creation ------
+function gridImages() {
+  console.log(imagesArr)
+  for (let i = 0; i < 10; i++) { //picking image at random
+    let randomInd = Math.floor(Math.random()* imagesArr.length);
+    let face = imagesArr[randomInd]
+    // console.log('face', face)
+    selected.push(face); // pushing copies 
+    selected.push(face);
+    imagesArr.splice(randomInd, 1); // removing from array so we don't select twice
+    // console.log('imagesArr', imagesArr)
+    // console.log('isArray imagesArr', Array.isArray(imagesArr))
+    // console.log('imagesArr[0]', imagesArr[0])
+    // console.log('imagesArr.length', imagesArr.length)
+    // console.log('randomInd', randomInd)
+    console.log("spliced", imagesArr)
+  }
+}
+
+// console.log('imagesArr', imagesArr)
+// console.log('isArray imagesArr', Array.isArray(imagesArr))
+// console.log('imagesArr[0]', imagesArr[0])
+// console.log('imagesArr.length', imagesArr.length)
+// console.log('randomInd', randomInd)
