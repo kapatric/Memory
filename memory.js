@@ -1,4 +1,4 @@
-const url = "https://foodish-api.herokuapp.com/api/images/dessert";
+const url = "https://foodish-api.herokuapp.com/api/images/pizza";
 let selected = [];
 let imagesArr = []
 
@@ -7,6 +7,7 @@ let imagesArr = []
 //   .then((data) => {
 //   console.log(data)
 //   })
+//console.log(imagesArr)
 
  // ------- Fetching Images ---------
 async function fetchImages() {
@@ -18,6 +19,8 @@ async function fetchImages() {
   // console.log(Array.isArray(imagesArr)),
   //   console.log('imagesArr', imagesArr)
   gridImages()
+  shuffleSelected()
+  makeGrid()
 }
 
 fetchImages()
@@ -25,10 +28,12 @@ fetchImages()
 // ------ Creation of Grid --------
 function makeGrid() {
   let tbl = document.getElementById("grid");
+  let index = 0;
 
   for (let i = 0; i < 4; i++) {
     let myRow = document.createElement("tr");
-    console.log(myRow)
+
+   // console.log(myRow)
     myRow.id = "row" + i;
 
     tbl.appendChild(myRow);
@@ -37,12 +42,26 @@ function makeGrid() {
     for (let j = 0; j < 5; j++){
       let myCell = document.createElement("td");
       myCell.classList = "cell"
-
+  //------ send images to cells    
+      let cardHTML = `
+      <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="${selected[index].image}" alt="Avatar" style="width:100px;height:100px;">
+        </div>
+        <div class="flip-card-back">
+          
+        </div>
+      </div>
+    </div>
+      `
+      index++
+      myCell.insertAdjacentHTML("beforeend", cardHTML)
       rowW.appendChild(myCell);
     }
   }
 }
-makeGrid()
+// makeGrid()
 
 let cells = document.querySelectorAll(".cell")
 //console.log(cells)
@@ -54,12 +73,12 @@ cells[i].draw
 cells.forEach((cell) => cell.addEventListener("click", handleCellClicked));
 
 function handleCellClicked() {
-  console.log("Iwas Clicked!")
+  console.log("I was Clicked!")
 }
 
-// ------- card image creation ------
+// ------- card image creation && push ------
 function gridImages() {
-  console.log(imagesArr)
+  //console.log(imagesArr)
   for (let i = 0; i < 10; i++) { //picking image at random
     let randomInd = Math.floor(Math.random()* imagesArr.length);
     let face = imagesArr[randomInd]
@@ -67,7 +86,25 @@ function gridImages() {
     selected.push(face); // pushing copies 
     selected.push(face);
     imagesArr.splice(randomInd, 1); // removing from array so we don't select twice
-    console.log("spliced", imagesArr)
+  //  console.log("spliced", imagesArr)
+    
+    //console.log(imagesArr)
   }
 }
 
+//------- Randomize selected images ------
+function shuffleSelected() {
+  let currentIndex = selected.length, randomIndex;
+//console.log(currentIndex)
+  while (currentIndex != 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    [selected[currentIndex], selected[randomIndex]] = [
+      selected[randomIndex], selected[currentIndex]];
+  }
+  return selected;
+  
+}
+
+console.log(selected)
