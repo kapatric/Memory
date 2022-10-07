@@ -1,6 +1,8 @@
 const url = "https://foodish-api.herokuapp.com/api/images/pizza";
 let selected = [];
-let imagesArr = []
+let imagesArr = [];
+let compared = [];
+let numClicked = 1;
 
 // fetch(url)
 //   .then((res) => res.json())
@@ -71,13 +73,32 @@ function makeGrid() {
 // cells.forEach((cell) => cell.addEventListener("click", handleCellClicked));
 
 function handleCellClicked(e) {
-  console.log("I was Clicked!")
-  console.log(e.target.parentElement.parentElement)
-  console.log(e.target.parentElement)
+  //console.log("I was Clicked!")
+  //console.log(e.target.parentElement.parentElement)
+ //console.log(e.target.parentElement)
   let flipContainer = e.target.parentElement.parentElement
   let flipInnerContainer = e.target.parentElement
+  let flip = e.target.parentElement.lastElementChild.lastElementChild.src
+  compared.push(flip)
 
-  flipContainer.style.transform = 'rotateX(180deg)';
+  if (numClicked % 2 == 0 && numClicked !==0) {
+    console.log(numClicked)
+    numClicked++;
+    
+  } if (flip != flip) {
+    flipContainer.style.transform = 'rotateX(-180deg)'; // flipping cells
+  flipInnerContainer.style.transform = 'rotateX(-180deg)';
+  }
+  
+  else {
+   flip === flip
+    console.log("It's a match!")
+  }
+  
+
+console.log(compared)
+  
+  flipContainer.style.transform = 'rotateX(180deg)'; // flipping cells
   flipInnerContainer.style.transform = 'rotateX(180deg)';
 }
 

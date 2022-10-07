@@ -19,3 +19,5 @@
 ### Contribution
 - Intro to "Memory:
 https://www.khanacademy.org/computing/computer-programming/programming-games-visualizations/memory-game/a/intro-to-memory
+
+How To Create a Flip Card - https://www.w3schools.com/howto/howto_css_flip_card.asp
