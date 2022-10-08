@@ -75,32 +75,34 @@ function makeGrid() {
 function handleCellClicked(e) {
   //console.log("I was Clicked!")
   //console.log(e.target.parentElement.parentElement)
- //console.log(e.target.parentElement)
+  //console.log(e.target.parentElement)
   let flipContainer = e.target.parentElement.parentElement
   let flipInnerContainer = e.target.parentElement
   let flip = e.target.parentElement.lastElementChild.lastElementChild.src
-  compared.push(flip)
-
-  if (numClicked % 2 == 0 && numClicked !==0) {
-    console.log(numClicked)
-    numClicked++;
-    
-  } if (flip != flip) {
-    flipContainer.style.transform = 'rotateX(-180deg)'; // flipping cells
-  flipInnerContainer.style.transform = 'rotateX(-180deg)';
-  }
-  
-  else {
-   flip === flip
-    console.log("It's a match!")
-  }
   
 
-console.log(compared)
+  if (compared.length < 2) {
+   // flipContainer.style.transform = 'rotateX(180deg)'; // flipping cells
+    flipInnerContainer.style.transform = 'rotateX(180deg)';
+    compared.push(flip)
+    compared[0] === compared[1]
+  } else if (compared.length < 2) {
+    compared[0] != compared[1]
+    console.log("Not a match!")
+    compared = []
+   // flipContainer.style.transform = 'rotateX(360deg)' // flipping back cells
+   flipInnerContainer.style.transform = 'rotateX(360deg)'
+    //console.log(flipContainer)
+  }
   
-  flipContainer.style.transform = 'rotateX(180deg)'; // flipping cells
-  flipInnerContainer.style.transform = 'rotateX(180deg)';
+  console.log(compared)
+  console.log(compared[0])
+  
+  //flipContainer.style.transform = 'rotateX(180deg)'; // flipping cells
+//flipInnerContainer.style.transform = 'rotateX(180deg)';
+
 }
+
 
 // ------- card image creation && push ------
 function gridImages() {
