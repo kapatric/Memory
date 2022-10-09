@@ -4,13 +4,6 @@ let imagesArr = [];
 let compared = [];
 let numClicked = 1;
 
-// fetch(url)
-//   .then((res) => res.json())
-//   .then((data) => {
-//   console.log(data)
-//   })
-//console.log(imagesArr)
-
  // ------- Fetching Images ---------
 async function fetchImages() {
   for (let i = 0; i < 10 ; i++){
@@ -18,8 +11,7 @@ async function fetchImages() {
     let data = await res.json()
     imagesArr.push(data)
   }
-  // console.log(Array.isArray(imagesArr)),
-  //   console.log('imagesArr', imagesArr)
+  
   gridImages()
   shuffleSelected()
   makeGrid()
@@ -35,7 +27,6 @@ function makeGrid() {
   for (let i = 0; i < 4; i++) {
     let myRow = document.createElement("tr");
 
-   // console.log(myRow)
     myRow.id = "row" + i;
 
     tbl.appendChild(myRow);
@@ -64,18 +55,10 @@ function makeGrid() {
     }
   }
 }
-// makeGrid()
-
-// let cells = document.querySelectorAll(".cell")
-// console.log(cells)
 
 
-// cells.forEach((cell) => cell.addEventListener("click", handleCellClicked));
 
 function handleCellClicked(e) {
-  //console.log("I was Clicked!")
-  //console.log(e.target.parentElement.parentElement)
-  //console.log(e.target.parentElement)
   let flipContainer = e.target.parentElement.parentElement
   let flipInnerContainer = e.target.parentElement
   let flip = e.target.parentElement.lastElementChild.lastElementChild.src
@@ -88,22 +71,16 @@ function handleCellClicked(e) {
     compared[0] != compared[1]
     numClicked++
   } else {
-    flipInnerContainer.style.transform = 'rotateX(360deg)'
     compared[0] === compared[1]
     console.log("Not a match!")
     compared = []
-
+flipInnerContainer.style.transform = 'rotateX(360deg)'
    // flipContainer.style.transform = 'rotateX(360deg)' // flipping back cells
-   
-    //console.log(flipContainer)
   }
   
   console.log(compared)
   console.log(compared[0])
   
-  //flipContainer.style.transform = 'rotateX(180deg)'; // flipping cells
-//flipInnerContainer.style.transform = 'rotateX(180deg)';
-
 }
 
 
@@ -113,13 +90,10 @@ function gridImages() {
   for (let i = 0; i < 10; i++) { //picking image at random
     let randomInd = Math.floor(Math.random()* imagesArr.length);
     let face = imagesArr[randomInd]
-    // console.log('face', face)
     selected.push(face); // pushing copies 
     selected.push(face);
     imagesArr.splice(randomInd, 1); // removing from array so we don't select twice
-  //  console.log("spliced", imagesArr)
-    
-    //console.log(imagesArr)
+  
   }
 }
 
@@ -136,7 +110,5 @@ function shuffleSelected() {
   }
   return selected;
 }
-
-//console.log(selected)
 
 // --------------
