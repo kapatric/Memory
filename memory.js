@@ -85,13 +85,16 @@ function handleCellClicked(e) {
    // flipContainer.style.transform = 'rotateX(180deg)'; // flipping cells
     flipInnerContainer.style.transform = 'rotateX(180deg)';
     compared.push(flip)
-    compared[0] === compared[1]
-  } else if (compared.length < 2) {
     compared[0] != compared[1]
+    numClicked++
+  } else {
+    flipInnerContainer.style.transform = 'rotateX(360deg)'
+    compared[0] === compared[1]
     console.log("Not a match!")
     compared = []
+
    // flipContainer.style.transform = 'rotateX(360deg)' // flipping back cells
-   flipInnerContainer.style.transform = 'rotateX(360deg)'
+   
     //console.log(flipContainer)
   }
   
