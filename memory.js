@@ -43,7 +43,7 @@ function makeGrid() {
         <div class="flip-card-front">
           
         </div>
-        <div class="flip-card-back">
+        <div class="flip-card-back" data-flip="">
         <img src="${selected[index].image}" alt="Avatar" style="width:100px;height:100px;">
         </div>
       </div>
@@ -56,8 +56,6 @@ function makeGrid() {
   }
 }
 
-
-
 function handleCellClicked(e) {
   let flipContainer = e.target.parentElement.parentElement
   let flipInnerContainer = e.target.parentElement
@@ -68,21 +66,18 @@ function handleCellClicked(e) {
    // flipContainer.style.transform = 'rotateX(180deg)'; // flipping cells
     flipInnerContainer.style.transform = 'rotateX(180deg)';
     compared.push(flip)
-    compared[0] != compared[1]
     numClicked++
-  } else {
-    compared[0] === compared[1]
+  } else if (compared.length = (compared[0] != compared[1])) {
     console.log("Not a match!")
     compared = []
-flipInnerContainer.style.transform = 'rotateX(360deg)'
+    console.log(compared)
    // flipContainer.style.transform = 'rotateX(360deg)' // flipping back cells
+  } else  {
+    compared.length = (compared[0] === compared[1])
+    compared = []
   }
   
-  console.log(compared)
-  console.log(compared[0])
-  
 }
-
 
 // ------- card image creation && push ------
 function gridImages() {
@@ -111,4 +106,4 @@ function shuffleSelected() {
   return selected;
 }
 
-// --------------
+
